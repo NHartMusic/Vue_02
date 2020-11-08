@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "Blogs",
   data() {
@@ -13,19 +14,13 @@ export default {
       blogTitle: "Blogs",
     };
   },
-  methods: {
-    changeTitle() {
-      this.blogTitle = "Bernie Would Have Won";
-    },
-  },
-  beforeCreate() {
-    alert("its the hook");
-  },
+  methods: {},
   created() {
-    alert(" things have been created");
-  },
-  beforeUpdate() {
-    alert("things are about to happen");
+    axios
+      .get("https://jsonplaceholder.typicode.com/posts/")
+      .then((response) => {
+        console.log(response);
+      });
   },
 };
 </script>
